@@ -5,8 +5,9 @@
       <input type="text" v-model="query" placeholder="Enter your search...">
     </form>
     <div class="results" v-if="results">
-      <div class="result" v-for="result in results" v-bind:key="result">
+      <div class="result" v-for="result in results" v-bind:key="result.links[0].title">
         <img :src="result.links[0].href" :alt="result.data[0].title">
+        <p>{{result.data[0].title}}</p>
       </div>
     </div>
     
@@ -21,7 +22,7 @@ export default {
     return {
       msg: 'Search the stars with Vue.js and the Nasa API!',
       query: null,
-      results: ''
+      results: '',
     }
   },
   methods: {
